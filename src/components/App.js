@@ -1,6 +1,6 @@
 // Fichero src/components/App.js
 import '../styles/main.scss';
-//import image from '../images/blackboard.jpm';
+
 
 function App() {
   return (
