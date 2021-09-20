@@ -1,7 +1,6 @@
 // Fichero src/components/App.js
 import '../styles/main.scss';
 
-
 function App() {
   return (
     <div className="page">
