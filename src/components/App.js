@@ -10,6 +10,13 @@ function App() {
     console.log(nErrors);
     return setError(nErrors);
   };
+
+  const [lastLetter, setLastLetter] = useState('');
+  const handleLastLetter = (ev) => {
+    console.log(ev.target.value);
+    return setLastLetter(ev.target.value);
+  };
+
   return (
     <div className="page">
       <header>
@@ -47,12 +54,14 @@ function App() {
               Escribe una letra:
             </label>
             <input
+              onChange={handleLastLetter}
               autoComplete="off"
               className="form__input"
               maxLength="1"
               type="text"
               name="last-letter"
               id="last-letter"
+              value={lastLetter}
             />
           </form>
         </section>
