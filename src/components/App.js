@@ -12,10 +12,50 @@ function App() {
   };
 
   const [lastLetter, setLastLetter] = useState('');
+
   const handleLastLetter = (ev) => {
     console.log(ev.target.value);
+      // Por último, nuestra función que verifica si el campo es válido antes de realizar cualquier otra acción.
+    function verificar() {
+      const valido = validar();
+      if (!valido) {
+        alert('El campo no es válido.');
+      } else {
+        alert('El campo es válido');
+      }
+    }
+    verificar();
     return setLastLetter(ev.target.value);
-  };
+
+
+  // La siguiente funcion valida el elemento input
+  function validar() {
+    debugger;
+    // Variable que usaremos para determinar si el input es valido
+    let isValid = false;
+    // El pattern que vamos a comprobar
+    // const pattern = new RegExp('^[A-Z\u00D1\u00F1]$', 'i');
+    const pattern = new RegExp('^[a-zA-ZÀ-ÿ\u00f1\u00d1]$');
+
+    // Primera validacion, si input esta vacio entonces no es valido
+    if(!ev.target.value) {
+      isValid = false;
+    } else {
+    // Tercera validacion, si input contiene caracteres diferentes a los permitidos
+    if(!pattern.test(ev.target.value)){ 
+      // Si queremos agregar letras acentuadas y/o letra ñ debemos usar
+      // codigos de Unicode (ejemplo: Ñ: \u00D1  ñ: \u00F1)
+        isValid = false;
+      } else {
+        // Si pasamos todas la validaciones anteriores, entonces el input es valido
+        isValid = true;
+      }
+    }
+    // devolvemos el valor de isValid
+    return isValid;
+  }
+
+};
 
   return (
     <div className="page">
