@@ -30,7 +30,6 @@ function App() {
 
   // La siguiente funcion valida el elemento input
   function validar() {
-    debugger;
     // Variable que usaremos para determinar si el input es valido
     let isValid = false;
     // El pattern que vamos a comprobar
