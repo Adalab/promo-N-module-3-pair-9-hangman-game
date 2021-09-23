@@ -30,40 +30,40 @@ function App() {
     return setLastLetter(ev.target.value);
 
 
-  // La siguiente funcion valida el elemento input
-  function validar() {
-    // Variable que usaremos para determinar si el input es valido
-    let isValid = false;
-    // El pattern que vamos a comprobar
-    // const pattern = new RegExp('^[A-Z\u00D1\u00F1]$', 'i');
-    const pattern = new RegExp('^[a-zA-ZÀ-ÿ\u00f1\u00d1]$');
+    // La siguiente funcion valida el elemento input
+    function validar() {
+      // Variable que usaremos para determinar si el input es valido
+      let isValid = false;
+      // El pattern que vamos a comprobar
+      // const pattern = new RegExp('^[A-Z\u00D1\u00F1]$', 'i');
+      const pattern = new RegExp('^[a-zA-ZÀ-ÿ\u00f1\u00d1]$');
 
-    // Primera validacion, si input esta vacio entonces no es valido
-    if(!ev.target.value) {
-      isValid = false;
-    } else {
-    // Tercera validacion, si input contiene caracteres diferentes a los permitidos
-    if(!pattern.test(ev.target.value)){ 
-      // Si queremos agregar letras acentuadas y/o letra ñ debemos usar
-      // codigos de Unicode (ejemplo: Ñ: \u00D1  ñ: \u00F1)
+      // Primera validacion, si input esta vacio entonces no es valido
+      if(!ev.target.value) {
         isValid = false;
       } else {
-        // Si pasamos todas la validaciones anteriores, entonces el input es valido
-        isValid = true;
+      // Tercera validacion, si input contiene caracteres diferentes a los permitidos
+      if(!pattern.test(ev.target.value)){ 
+        // Si queremos agregar letras acentuadas y/o letra ñ debemos usar
+        // codigos de Unicode (ejemplo: Ñ: \u00D1  ñ: \u00F1)
+          isValid = false;
+        } else {
+          // Si pasamos todas la validaciones anteriores, entonces el input es valido
+          isValid = true;
+        }
       }
+      // devolvemos el valor de isValid
+      return isValid;
     }
-    // devolvemos el valor de isValid
-    return isValid;
+
+  };
+
+  const renderSolutionLetters = () => {
+    const wordLetters = word.split('');
+    return wordLetters.map( (letter,index) => { 
+      return <li key={index} className="letter"></li>
+    });
   }
-
-};
-
-const renderSolutionLetters = () => {
-  const wordLetters = word.split('');
-  wordLetters.map( (letter,index) => { 
-    return <li key={index} className="letter">_</li>
-  });
-}
 
   return (
     <div className="page">
