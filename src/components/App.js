@@ -12,6 +12,8 @@ function App() {
   };
 
   const [lastLetter, setLastLetter] = useState('');
+  const [word, setWord] = useState('patricia');
+  const [userLetters, setUserLetters] = useState([]);
 
   const handleLastLetter = (ev) => {
     console.log(ev.target.value);
@@ -56,6 +58,13 @@ function App() {
 
 };
 
+const renderSolutionLetters = () => {
+  const wordLetters = word.split('');
+  wordLetters.map( (letter,index) => { 
+    return <li key={index} className="letter">_</li>
+  });
+}
+
   return (
     <div className="page">
       <header>
@@ -66,7 +75,8 @@ function App() {
           <div className="solution">
             <h2 className="title">Solución:</h2>
             <ul className="letters">
-              <li className="letter">k</li>
+             {renderSolutionLetters()}
+              {/* <li className="letter">k</li>
               <li className="letter">a</li>
               <li className="letter"></li>
               <li className="letter">a</li>
@@ -75,7 +85,8 @@ function App() {
               <li className="letter"></li>
               <li className="letter">k</li>
               <li className="letter">e</li>
-              <li className="letter">r</li>
+              <li className="letter">r</li> */}
+               
             </ul>
           </div>
           <div className="feedback">
